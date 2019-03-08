@@ -1,0 +1,56 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Buy</title>
+</head>
+<body>
+    <div>
+        <h3>From for buyind book</h3>
+
+        @using (Html.BeginForm("Buy", "Home", FormMethod.Post))
+        {
+            <input type="hidden" value="@ViewBag.BookId" name="BookId" />
+            <table>
+                <tr>
+                    <td><p>Wpisz swoje imie</p></td>
+                    <td>@Html.TextBox("Person", "")</td>
+                    @*@<td><input type="text" name="Person" /> </td>*@
+                </tr>
+                <tr>
+                    <td><p>Wpisz Adress :</p></td>
+                    <td>@Html.TextBox("Adress", "")</td>
+                    @*<td><input type="text" name="Address" /> </td>*@
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Send" /> </td>
+                    <td></td>
+                </tr>
+            </table>
+        }
+        @*<form method="post" action="">
+                <input type="hidden" value="@ViewBag.BookId" name="BookId" />
+                <table>
+                    <tr>
+                        <td><p>Type your name</p></td>
+                        <td><input type="text" name="Person" /></td>
+                    </tr>
+                    <tr>
+                        <td><p>Type your adress</p></td>
+                        <td><input type="text" name="Adress" /></td>
+                    </tr>
+                    <tr>
+                        <td><input type="submit" value="Send" /></td>
+                    </tr>
+                </table>
+            </form>*@
+    </div>
+    @{Html.RenderPartial("Partial");}
+</body>
+</html>

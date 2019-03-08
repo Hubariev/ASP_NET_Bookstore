@@ -1,0 +1,70 @@
+﻿@* Jest wykorzystywany helper, który wyświetla ksiażki. Taki helper można wykorzystywać sporo razy *@
+@helper BookList(IEnumerable<Urok1_povtor_metanit.Models.Book> books)
+    {
+        <ul>
+            @foreach (Urok1_povtor_metanit.Models.Book b in books)
+            {
+                <li>@b.Name</li>
+            }
+        </ul>
+}
+
+
+
+@using Urok1_povtor_metanit.Models
+@model IEnumerable<Book>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device=width" />
+</head>
+<body>
+    <div>
+        <h3>Books</h3>
+        <table>
+            <tr>
+                <td><p>Name</p></td>
+                <td><p>Author</p></td>
+                <td><p>Price</p></td>
+            </tr>
+            @foreach (Urok1_povtor_metanit.Models.Book item in Model)
+            {
+                <tr>
+                    <td><p>@item.Name</p></td>
+
+                    <td><p>@item.Author</p></td>
+                    <td><p>@item.Price</p></td>
+                    <td><p><a href="/Home/Buy/@item.Id">Buy</a></p></td>
+                </tr>
+            }
+            @{
+                string boby = "Hello, honey!";
+            }
+            /**/
+            /**/
+            <tr>
+                <td><p><a href="/Home/Reads?b=@boby">All purchase</a></p></td>
+
+
+                <td><p><a href="/Home/GetFile">Download picture</a></p></td>
+                <td><p><a href="/Home/GetBytes">Download bytes picture</a></p></td>
+                <td><p><a href="/Home/InfoAboutUser">InfoAboutUser</a></p></td>
+            </tr>
+
+
+            @*<td><p>@Html.ActionLink("All purchase", "Reads", "Home", b = "hello")</p></td>*@
+        </table>
+        <table>
+            @BookList(Model)
+            @BookList(Model)
+        </table>
+    </div>
+</body>
+</html>
+

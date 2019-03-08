@@ -1,0 +1,33 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Reads</title>
+</head>
+<body>
+    <div>
+        <table>
+            <tr>
+                <td><p>Name</p></td>
+                <td><p>Adress</p></td>
+                <td><p>Data</p></td>
+            </tr>
+            @foreach (var item in ViewBag.Purchases)
+            {
+                <tr>
+                    <td><p>@item.Person</p></td>
+                    <td><p>@item.Adress</p></td>
+                    <td><p>@item.Date</p></td>
+                </tr>
+            }
+           <p>@ViewData["Head"]</p>
+        </table>
+    </div>
+</body>
+</html>
