@@ -10,5 +10,6 @@ namespace Urok1_povtor_metanit.Models
     {
         public DbSet<Book> Books { get; set; }
         public DbSet<Purchase> Purchases { get; set; }
+        public DbSet<Author> Authors { get; set; }
     }
 }

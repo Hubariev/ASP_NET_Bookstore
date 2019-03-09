@@ -14,10 +14,16 @@ namespace Urok1_povtor_metanit.Controllers
 
         BookContext db = new BookContext();
 
+        /// <summary>
+        /// Wyświetlenie wszytkich książek z bazy danych
+        /// </summary>
+        /// <returns></returns>
         public async Task<ActionResult> Index()
         {
             //IEnumerable<Book> books = await db.Books.ToListAsync();
             //ViewBag.Books = books;
+            SelectList books = new SelectList(await db.Books.ToListAsync(), "Author", "Name");
+            ViewBag.Books = books;
             return View(await db.Books.ToListAsync());
         }
 
@@ -28,6 +34,14 @@ namespace Urok1_povtor_metanit.Controllers
             return View();
         }
 
+
+
+        /// <summary>
+        /// W  #region mamy metody sprawdzenia wieku, pobrania plików, info o użytkowniku i t.d
+        /// </summary>
+        /// <param name="age"></param>
+        /// <returns></returns>
+        #region
         public ActionResult Check(int age)
         {
             if (age < 21)
@@ -72,6 +86,9 @@ namespace Urok1_povtor_metanit.Controllers
             ViewBag.Message = "Это частичное представление.";
             return PartialView();
         }
+        #endregion 
+
+
 
 
         [HttpPost]
@@ -86,6 +103,12 @@ namespace Urok1_povtor_metanit.Controllers
             return Redirect("/Home/Index");
         }
 
+
+        /// <summary>
+        /// Zamówienia
+        /// </summary>
+        /// <param name="purchase"></param>
+        /// <returns></returns>
         [HttpGet]
         public async Task<ActionResult> Reads(string b)
         {
@@ -93,6 +116,94 @@ namespace Urok1_povtor_metanit.Controllers
             ViewBag.Purchases = purchases;
             ViewData["Head"] = b;
             return View();
+        }
+        
+
+        /// <summary>
+        /// Edytowanie książek z bazy danych
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        #region
+        [HttpGet]
+        public ActionResult EditBook(int? id ) 
+        {
+            if(id == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                //Book book = await db.Books.Where(p => p.Id == id).FirstOrDefault();
+                Book book = db.Books.Find(id);
+                if(book == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(book);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult EditBook(Book book)
+        {
+            if(book == null)
+            {
+                return HttpNotFound();
+            }
+            db.Entry(book).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        #endregion
+
+
+        /// <summary>
+        /// Tworzenie nowej książki
+        /// </summary>
+        /// <returns></returns>
+        #region
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(Book book)
+        {
+            if(book == null)
+            {
+                return HttpNotFound();
+            }
+            db.Books.Add(book);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        #endregion
+
+
+        [HttpGet]
+        public ActionResult DeleteBook(int? id)
+        {
+            Book book = db.Books.Find(id);
+            if(book == null)
+            {
+                return HttpNotFound();
+            }
+            return View(book);
+        }
+
+        [HttpPost]
+        public ActionResult DeleteBook(Book book)
+        {
+            if(book == null)
+            {
+                return HttpNotFound();
+            }
+            Book book1 = db.Books.Find(book.Id);
+            db.Books.Remove(book1);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
     }

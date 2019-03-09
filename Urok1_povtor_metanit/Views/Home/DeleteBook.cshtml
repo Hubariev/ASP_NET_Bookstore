@@ -1,0 +1,27 @@
+﻿@model Urok1_povtor_metanit.Models.Book
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>DeleteBook</title>
+</head>
+<body>
+    <div>
+        <h3>Usunięcie książki</h3>
+        @using (Html.BeginForm("DeleteBook", "Home", FormMethod.Post))
+        {
+            <table>
+                <tr><td><p>Nazwa książki: @Html.DisplayFor(m => m.Name)</p></td></tr>
+                <tr><td><p>Nazwa Authora: @Html.DisplayFor(m => m.Author)</p></td></tr>
+                <tr><td><p>Nazwa Price: @Html.DisplayFor(m => m.Price)</p></td></tr>
+                <tr><td><input type="submit" value="Delete"></td></tr>
+            </table>
+        }
+    </div>
+</body>
+</html>

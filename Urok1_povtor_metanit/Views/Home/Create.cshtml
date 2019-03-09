@@ -1,0 +1,38 @@
+﻿@model Urok1_povtor_metanit.Models.Book
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+</head>
+<body>
+    <div> 
+        <h3>Dodanie książki</h3>
+        @using (Html.BeginForm("Create", "Home", FormMethod.Post))
+        {
+        <table>
+            <tr>
+                <td><p>Wpisz nazwę książki: </p></td>
+                <td><p>@Html.EditorFor(m => m.Name)</p></td>
+            </tr>
+            <tr>
+                <td><p>Wpisz imie Authora: </p></td>
+                <td><p>@Html.EditorFor(m => m.Author)</p></td>
+            </tr>
+            <tr>
+                <td><p>Wpisz cenę książki: </p></td>
+                <td><p>@Html.EditorFor(m => m.Price)</p></td>
+            </tr>
+            <tr>
+                <td><p><input type="submit" value="Dodać"></p></td>
+            </tr>
+        </table>
+        }
+    </div>
+</body>
+</html>

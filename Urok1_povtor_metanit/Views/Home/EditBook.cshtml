@@ -1,0 +1,41 @@
+﻿@model Urok1_povtor_metanit.Models.Book
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>EditBook</title>
+</head>
+<body>
+    <div>
+        @using (Html.BeginForm("EditBook", "Home", FormMethod.Post))
+        {
+            <fildset>
+                <h3>Edytowanie ksiązki</h3>
+                <table>
+                    <tr>
+                        <td><p>@Html.LabelFor(m => m.Name)</p></td>
+                        <td><p>@Html.EditorFor(m => m.Name, "")</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>@Html.LabelFor(m => m.Author)</p></td>
+                        <td><p>@Html.EditorFor(m => m.Author, "")</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>@Html.LabelFor(m => m.Price)</p></td>
+                        <td><p>@Html.EditorFor(m => m.Price, "")</p></td>
+                    </tr>
+                    <tr>
+                        <td><input type="submit" value="Edit" /></td>
+                    </tr>
+                </table>
+            </fildset>
+        }
+    </div>
+</body>
+</html>

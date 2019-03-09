@@ -1,4 +1,4 @@
-﻿
+﻿@model Urok1_povtor_metanit.Models.Purchase
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -24,8 +24,10 @@
                     @*@<td><input type="text" name="Person" /> </td>*@
                 </tr>
                 <tr>
-                    <td><p>Wpisz Adress :</p></td>
-                    <td>@Html.TextBox("Adress", "")</td>
+                    @*<td><p>Wpisz Adress :</p></td>*@
+                    <td>@Html.LabelFor(m => m.Adress,"Wpisz adress")</td>
+                    <td>@Html.TextBoxFor(m => m.Adress)</td>
+                    @*<td>@Html.TextBox("Adress", "")</td>*@
                     @*<td><input type="text" name="Address" /> </td>*@
                 </tr>
                 <tr>

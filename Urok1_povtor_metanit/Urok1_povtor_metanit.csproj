@@ -152,6 +152,16 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903071527531_InitialCreate.cs" />
+    <Compile Include="Migrations\201903071527531_InitialCreate.Designer.cs">
+      <DependentUpon>201903071527531_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903091438584_MigrateDB.cs" />
+    <Compile Include="Migrations\201903091438584_MigrateDB.Designer.cs">
+      <DependentUpon>201903091438584_MigrateDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Author.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\BookContext.cs" />
     <Compile Include="Models\BookDbInitializer.cs" />
@@ -196,6 +206,14 @@
     <Content Include="Views\Home\Buy.cshtml" />
     <Content Include="Views\Home\Reads.cshtml" />
     <Content Include="Views\Home\Partial.cshtml" />
+    <Content Include="Views\Home\EditBook.cshtml" />
+    <Content Include="Views\Home\Create.cshtml" />
+    <Content Include="Views\Home\DeleteBook.cshtml" />
+    <Content Include="Views\Book\Create.cshtml" />
+    <Content Include="Views\Book\Delete.cshtml" />
+    <Content Include="Views\Book\Details.cshtml" />
+    <Content Include="Views\Book\Edit.cshtml" />
+    <Content Include="Views\Book\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -213,6 +231,14 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201903071527531_InitialCreate.resx">
+      <DependentUpon>201903071527531_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903091438584_MigrateDB.resx">
+      <DependentUpon>201903091438584_MigrateDB.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

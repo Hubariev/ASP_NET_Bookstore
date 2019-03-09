@@ -13,6 +13,8 @@ namespace Urok1_povtor_metanit.Models
 
         public string Author { get; set; }
 
+        public int AuthorId { get; set; }
+
         public int Price { get; set; }
     }
 }
