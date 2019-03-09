@@ -17,7 +17,7 @@
         {
             <table>
                 <tr><td><p>Nazwa książki: @Html.DisplayFor(m => m.Name)</p></td></tr>
-                <tr><td><p>Nazwa Authora: @Html.DisplayFor(m => m.Author)</p></td></tr>
+                <tr><td><p>Nazwa Authora: @ViewData["Author"]</p></td></tr>
                 <tr><td><p>Nazwa Price: @Html.DisplayFor(m => m.Price)</p></td></tr>
                 <tr><td><input type="submit" value="Delete"></td></tr>
             </table>

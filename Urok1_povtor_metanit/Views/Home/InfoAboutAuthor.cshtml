@@ -1,0 +1,39 @@
+﻿@using Urok1_povtor_metanit.Models
+@model IEnumerable<Author>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>InfoAboutAuthor</title>
+</head>
+<body>
+    <div>
+        <h3>Info</h3>
+        <table>
+            <tr>
+                <td><p><b>Name</b></p></td>
+                <td><p><b>Country</b></p></td>
+                <td><p><b>Year</b></p></td>
+                <td><p><b>Books</b></p></td>
+            </tr>
+            @foreach (Urok1_povtor_metanit.Models.Author item in Model)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Country</td>
+                    <td>@item.Year</td>
+                    <td>@Html.</td>
+                </tr>
+
+
+            }
+        </table>
+    </div>
+</body>
+</html>
+

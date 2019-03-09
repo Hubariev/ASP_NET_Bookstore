@@ -43,7 +43,7 @@
                 <tr>
                     <td><p>@item.Name</p></td>
 
-                    <td><p>@item.Author</p></td>
+                    <td><p>@item.Author.Name</p></td>
                     <td><p>@item.Price</p></td>
                     <td><p><a href="/Home/Buy/@item.Id">Buy</a></p></td>
                     <td><p><a href="/Home/EditBook/@item.Id">Edit</a></p></td>
@@ -63,6 +63,14 @@
                 <td><p><a href="/Home/GetBytes">Download bytes picture</a></p></td>
                 <td><p><a href="/Home/InfoAboutUser">InfoAboutUser</a></p></td>
             </tr>
+            <tr>
+
+            </tr>
+            <tr>
+                <td><p>Author i jego książki:</p></td>       
+            </tr>
+            <tr><td><p><a href="/Home/InfoAboutAuthor">InfoAboutAuthor</a></p></td></tr>
+            <tr> <td>----------------------</td></tr>
             <p><b><a href="/Home/Create">Dodanie nowej książki</a></b></p>
 
             @*<td><p>@Html.ActionLink("All purchase", "Reads", "Home", b = "hello")</p></td>*@

@@ -24,7 +24,7 @@ namespace Urok1_povtor_metanit.Controllers
             //ViewBag.Books = books;
             SelectList books = new SelectList(await db.Books.ToListAsync(), "Author", "Name");
             ViewBag.Books = books;
-            return View(await db.Books.ToListAsync());
+            return View(await db.Books.Include(p => p.Author).ToListAsync());
         }
 
         [HttpGet]
@@ -117,7 +117,7 @@ namespace Urok1_povtor_metanit.Controllers
             ViewData["Head"] = b;
             return View();
         }
-        
+
 
         /// <summary>
         /// Edytowanie książek z bazy danych
@@ -126,9 +126,9 @@ namespace Urok1_povtor_metanit.Controllers
         /// <returns></returns>
         #region
         [HttpGet]
-        public ActionResult EditBook(int? id ) 
+        public ActionResult EditBook(int? id)
         {
-            if(id == null)
+            if (id == null)
             {
                 return HttpNotFound();
             }
@@ -136,10 +136,13 @@ namespace Urok1_povtor_metanit.Controllers
             {
                 //Book book = await db.Books.Where(p => p.Id == id).FirstOrDefault();
                 Book book = db.Books.Find(id);
-                if(book == null)
+                if (book == null)
                 {
                     return HttpNotFound();
                 }
+                SelectList authors = new SelectList(db.Authors, "Id", "Name", book.AuthorId);
+                ViewBag.Authors = authors;
+
                 return View(book);
             }
         }
@@ -147,7 +150,7 @@ namespace Urok1_povtor_metanit.Controllers
         [HttpPost]
         public ActionResult EditBook(Book book)
         {
-            if(book == null)
+            if (book == null)
             {
                 return HttpNotFound();
             }
@@ -157,7 +160,7 @@ namespace Urok1_povtor_metanit.Controllers
         }
         #endregion
 
-
+        
         /// <summary>
         /// Tworzenie nowej książki
         /// </summary>
@@ -165,13 +168,16 @@ namespace Urok1_povtor_metanit.Controllers
         #region
         public ActionResult Create()
         {
+            SelectList authors = new SelectList(db.Authors, "Id", "Name");
+
+            ViewBag.Authors = authors;
             return View();
         }
 
         [HttpPost]
         public ActionResult Create(Book book)
         {
-            if(book == null)
+            if (book == null)
             {
                 return HttpNotFound();
             }
@@ -186,7 +192,9 @@ namespace Urok1_povtor_metanit.Controllers
         public ActionResult DeleteBook(int? id)
         {
             Book book = db.Books.Find(id);
-            if(book == null)
+            Author vv  = db.Authors.Find(book.AuthorId);
+            ViewData["Author"] = vv.Name;
+            if (book == null)
             {
                 return HttpNotFound();
             }
@@ -196,7 +204,7 @@ namespace Urok1_povtor_metanit.Controllers
         [HttpPost]
         public ActionResult DeleteBook(Book book)
         {
-            if(book == null)
+            if (book == null)
             {
                 return HttpNotFound();
             }
@@ -206,5 +214,13 @@ namespace Urok1_povtor_metanit.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult InfoAboutAuthor()
+        {
+            return View(db.Authors);
+        }
+
     }
 }
+
+///Два варика реализации. Первый сделать в Book лист ауторов, потом в контексте замутить общую таблицу и так выводитьж
+//или замутить метод для вывода книг для каждого автора отдельно: менее круто

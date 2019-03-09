@@ -160,11 +160,14 @@
     <Compile Include="Migrations\201903091438584_MigrateDB.Designer.cs">
       <DependentUpon>201903091438584_MigrateDB.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903091608457_MigrateDB1.cs" />
+    <Compile Include="Migrations\201903091608457_MigrateDB1.Designer.cs">
+      <DependentUpon>201903091608457_MigrateDB1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Author.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\BookContext.cs" />
-    <Compile Include="Models\BookDbInitializer.cs" />
     <Compile Include="Models\Purchase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -209,11 +212,7 @@
     <Content Include="Views\Home\EditBook.cshtml" />
     <Content Include="Views\Home\Create.cshtml" />
     <Content Include="Views\Home\DeleteBook.cshtml" />
-    <Content Include="Views\Book\Create.cshtml" />
-    <Content Include="Views\Book\Delete.cshtml" />
-    <Content Include="Views\Book\Details.cshtml" />
-    <Content Include="Views\Book\Edit.cshtml" />
-    <Content Include="Views\Book\Index.cshtml" />
+    <Content Include="Views\Home\InfoAboutAuthor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -238,6 +237,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201903091438584_MigrateDB.resx">
       <DependentUpon>201903091438584_MigrateDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903091608457_MigrateDB1.resx">
+      <DependentUpon>201903091608457_MigrateDB1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
