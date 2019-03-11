@@ -1,0 +1,14 @@
+﻿@model IEnumerable<Urok1_povtor_metanit.Models.Author>
+
+<div id="searchresults">
+    <h3>Все книги автора : </h3>
+    <ul>
+        @foreach (Urok1_povtor_metanit.Models.Author item in Model)
+        {
+            foreach (Urok1_povtor_metanit.Models.Book item1 in @item.Books)
+            {
+                <li>@item1.Name</li>
+            }
+        }
+    </ul>
+</div>

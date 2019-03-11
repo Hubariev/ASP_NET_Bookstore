@@ -27,13 +27,19 @@
                     <td>@item.Name</td>
                     <td>@item.Country</td>
                     <td>@item.Year</td>
-                    <td>@Html.</td>
+                    @*<td><p><a href="/Home/AuthorHisBooks/@item.Id">Books</a></p></td>*@
+                    <td><p>@Ajax.ActionLink("Books", "AuthorHisBooks", new { id = @item.Id }, new AjaxOptions { UpdateTargetId = "results" })</p></td>
                 </tr>
 
 
             }
         </table>
     </div>
+    <div id="results"></div>
 </body>
 </html>
+
+@Scripts.Render("~/scripts/jquery-1.10.2.min.js")
+@Scripts.Render("~/scripts/jquery.unobtrusive-ajax.min.js")
+
 

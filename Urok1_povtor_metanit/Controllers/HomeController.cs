@@ -219,6 +219,29 @@ namespace Urok1_povtor_metanit.Controllers
             return View(db.Authors);
         }
 
+        [HttpGet]
+        public ActionResult AuthorHisBooks(int? id)
+        {
+            var allbooks = db.Books.Where(p => p.AuthorId == id).ToList();
+            if(allbooks.Count <= 0)
+            {
+                return HttpNotFound();
+            }
+            return PartialView(allbooks);
+        }
+
+        [HttpPost]
+        public ActionResult BookSearch(string name)
+        {
+            //Author author = db.Authors.Where(p => p.Name == name) as Author;
+            //var allbooks = db.Books.Where(a => a.AuthorId == author.Id).ToList();
+            var allbooks = db.Authors.Include(p => p.Books).ToList();
+            if (allbooks.Count <= 0)
+            {
+                return HttpNotFound();
+            }
+            return PartialView(allbooks);
+        }
     }
 }
 
