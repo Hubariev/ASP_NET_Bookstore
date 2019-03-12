@@ -39,19 +39,19 @@
             @Html.DropDownList("Author", ViewBag.Books as SelectList)
 
             @foreach (Urok1_povtor_metanit.Models.Book item in Model)
-            {
-                <tr>
-                    <td><p>@item.Name</p></td>
+    {
+        <tr>
+            <td><p>@item.Name</p></td>
 
-                    <td><p>@item.Author.Name</p></td>
-                    <td><p>@item.Price</p></td>
-                    <td><p><a href="/Home/Buy/@item.Id">Buy</a></p></td>
-                    <td><p><a href="/Home/EditBook/@item.Id">Edit</a></p></td>
-                    <td><p><a href="/Home/DeleteBook/@item.Id">Delete</a></p></td>
-                </tr>
-            }
+            <td><p>@item.Author.Name</p></td>
+            <td><p>@item.Price</p></td>
+            <td><p><a href="/Home/Buy/@item.Id">Buy</a></p></td>
+            <td><p><a href="/Home/EditBook/@item.Id">Edit</a></p></td>
+            <td><p><a href="/Home/DeleteBook/@item.Id">Delete</a></p></td>
+        </tr>
+}
             @{
-                string boby = "Hello, honey!";
+        string boby = "Hello, honey!";
             }
             /**/
             /**/
@@ -67,27 +67,18 @@
             <tr>
                 <td><p>Author i jego książki:</p></td>
             </tr>
-            <tr><td><p><a href="/Home/InfoAboutAuthor">InfoAboutAuthor</a></p></td></tr>
+            <tr>
+                <td><p>@Ajax.ActionLink("Spis Authorów", "InfoAboutAuthor", new AjaxOptions { UpdateTargetId = "results2" })</p></td>
+
+            </tr>
             <tr> <td>----------------------</td></tr>
             <p><b><a href="/Home/Create">Dodanie nowej książki</a></b></p>
-
+            <p><b><a href="/Home/GetAuthor">Dodanie do authora</a></b></p>
             @*<td><p>@Html.ActionLink("All purchase", "Reads", "Home", b = "hello")</p></td>*@
         </table>
-        <table>
-            @BookList(Model)
-            @BookList(Model)
-        </table>
     </div>
-
-
-    @*<div>
-        @using (Ajax.BeginForm("BookSearch", new AjaxOptions { UpdateTargetId = "results" }))
-        {
-            <input type="text" name="name" />
-            <input type="submit" value="Поиск" />
-        }
-        <div id="results"></div>
-    </div>*@
+    <div id="results2"></div>
+    
 
     <div>
         @using (Ajax.BeginForm("BookSearch", new AjaxOptions
@@ -109,9 +100,12 @@
 
         <div id="results"></div>
     </div>
-
+    <table>
+        @BookList(Model)
+        @BookList(Model)
+    </table>
 </body>
 </html>
-
+<a>bob</a>
 @Scripts.Render("~/scripts/jquery-3.3.1.min.js")
 @Scripts.Render("~/scripts/jquery.unobtrusive-ajax.min.js")

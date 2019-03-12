@@ -216,9 +216,10 @@
     <Content Include="Views\Home\EditBook.cshtml" />
     <Content Include="Views\Home\Create.cshtml" />
     <Content Include="Views\Home\DeleteBook.cshtml" />
-    <Content Include="Views\Home\InfoAboutAuthor.cshtml" />
     <Content Include="Views\Home\AuthorHisBooks.cshtml" />
     <Content Include="Views\Home\BookSearch.cshtml" />
+    <Content Include="Views\Home\InfoAboutAuthor.cshtml" />
+    <Content Include="Views\Home\GetAuthor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

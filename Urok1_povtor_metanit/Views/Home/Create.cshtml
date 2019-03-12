@@ -1,38 +1,79 @@
-﻿@model Urok1_povtor_metanit.Models.Book
+﻿@using Urok1_povtor_metanit.Models
+@model Book
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@{
+    Book[] books = new Book[5];
 
-<!DOCTYPE html>
+}
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Create</title>
-</head>
-<body>
-    <div> 
-        <h3>Dodanie książki</h3>
-        @using (Html.BeginForm("Create", "Home", FormMethod.Post))
-        {
-        <table>
-            <tr>
-                <td><p>Wpisz nazwę książki: </p></td>
-                <td><p>@Html.EditorFor(m => m.Name)</p></td>
-            </tr>
-            <tr>
-                <td><p>Wybierz imie Authora: </p></td>
-                <td><p>@Html.DropDownListFor(model => model.AuthorId, ViewBag.Authors as SelectList)</p></td>
-            </tr>
-            <tr>
-                <td><p>Wpisz cenę książki: </p></td>
-                <td><p>@Html.EditorFor(m => m.Price)</p></td>
-            </tr>
-            <tr>
-                <td><p><input type="submit" value="Dodać"></p></td>
-            </tr>
-        </table>
-        }
+<h3>Dodanie książki</h3>
+
+@using (Html.BeginForm("Create", "Home", FormMethod.Post))
+{
+    int i = 0;
+    @Html.AntiForgeryToken()
+
+    <div id="booksBlock">
+        <div class="bookItem">
+            <table>
+                <tr>
+                    <td><p>Wpisz nazwę książki: </p></td>
+                    <td><p>@Html.EditorFor(m => books[i].Name)</p></td>
+                </tr>
+                <tr>
+                    <td><p>Wybierz imie Authora: </p></td>
+                    <td><p>@Html.DropDownListFor(m => books[i].AuthorId, ViewBag.Authors as SelectList)</p></td>
+                </tr>
+                <tr>
+                    <td><p>Wpisz cenę książki: </p></td>
+                    <td><p>@Html.EditorFor(m => books[i].Price)</p></td>
+                </tr>
+            </table>
+        </div>
     </div>
-</body>
-</html>
+    <p><a class="addLink">Dodać książkę</a></p>
+    <p><input type="submit" value="Dodać"></p>
+}
+
+
+
+
+@section Scripts {
+    <script>
+        $(function () {
+            var b = 0;
+            $('.addLink').click(function () {
+                b++;
+                var html2Add =
+                    "<div class='bookItem'>" +
+                    "<table>"
+                    + "<tr>" +
+                    "<td><p>Wpisz nazwę książki: </p></td>" +
+                    "<td><p><input type='text' name='Books[" + b + "].Name' /></p></td>" +
+                    "</tr>" +
+                    "<tr>" +
+                    "<td><p>Wybierz imie Authora: </p></td>" +
+                    "<select name='books[" + b + "].AuthorId'>";
+                
+                        for (var item in @ViewBag.Authors)
+                        {
+                            var html3Add =+ "<option value='" + item + "' selected>" + item + "</option>"
+                        }       
+                    var html4Add = "</select>" + 
+                    "</tr>" +
+                    "<tr>" +
+                    "<td><p>Wpisz cenę książki: </p></td>" +
+                    "<td><p><input type='text' name='Books[" + b + "].Price' /></p></td>" +
+                    "</tr>" +
+                    "</table>" +
+                    "</div>";
+                var ttt = html2Add + html3Add + html4Add;
+                $('#booksBlock').append(ttt);
+            })
+        })
+    </script>
+}
+@Scripts.Render("~/scripts/jquery-3.3.1.min.js")
+@Scripts.Render("~/scripts/jquery.unobtrusive-ajax.min.js")

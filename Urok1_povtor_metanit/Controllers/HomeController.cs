@@ -19,6 +19,7 @@ namespace Urok1_povtor_metanit.Controllers
         /// </summary>
         /// <returns></returns>
         public async Task<ActionResult> Index()
+
         {
             //IEnumerable<Book> books = await db.Books.ToListAsync();
             //ViewBag.Books = books;
@@ -175,19 +176,27 @@ namespace Urok1_povtor_metanit.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(Book book)
+        public ActionResult Create(List<Book> books)
         {
-            if (book == null)
+            foreach(Book book in books)
             {
-                return HttpNotFound();
-            }
-            db.Books.Add(book);
+                if (book == null){}
+                else
+                {
+                    db.Books.Add(book);
+                }
+            }          
             db.SaveChanges();
             return RedirectToAction("Index");
         }
         #endregion
 
-
+        /// <summary>
+        /// Usunięcie książki
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        #region
         [HttpGet]
         public ActionResult DeleteBook(int? id)
         {
@@ -213,10 +222,11 @@ namespace Urok1_povtor_metanit.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        #endregion
 
         public ActionResult InfoAboutAuthor()
         {
-            return View(db.Authors);
+            return PartialView(db.Authors);
         }
 
         [HttpGet]
@@ -241,6 +251,17 @@ namespace Urok1_povtor_metanit.Controllers
                 return HttpNotFound();
             }
             return PartialView(allbooks);
+        }
+
+        [HttpPost]
+        public ActionResult GetAuthor(Author author)
+        {
+            return View();
+        }
+
+        public ActionResult GetAuthor()
+        {
+            return View();
         }
     }
 }

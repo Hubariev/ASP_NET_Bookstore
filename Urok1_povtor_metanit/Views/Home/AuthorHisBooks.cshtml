@@ -2,10 +2,12 @@
 
 <div id="serch_book">
     <h3>Wszystkie książki:</h3>
-    <ul>
-        @foreach (var item in Model)
-        {
+
+    @foreach (var item in Model)
+    {
+        <ul>
             <li><b>Nazwa książki: </b> @item.Name | <b>Cena książki: </b>@item.Price</li>
-        }
-    </ul>
+        </ul>
+    }
+
 </div>
