@@ -155,17 +155,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\PagingHelpers.cs" />
-    <Compile Include="Migrations\201903071527531_InitialCreate.cs" />
-    <Compile Include="Migrations\201903071527531_InitialCreate.Designer.cs">
-      <DependentUpon>201903071527531_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201903091438584_MigrateDB.cs" />
-    <Compile Include="Migrations\201903091438584_MigrateDB.Designer.cs">
-      <DependentUpon>201903091438584_MigrateDB.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201903091608457_MigrateDB1.cs" />
-    <Compile Include="Migrations\201903091608457_MigrateDB1.Designer.cs">
-      <DependentUpon>201903091608457_MigrateDB1.cs</DependentUpon>
+    <Compile Include="Migrations\201903141742169_MigrateDB1.cs" />
+    <Compile Include="Migrations\201903141742169_MigrateDB1.Designer.cs">
+      <DependentUpon>201903141742169_MigrateDB1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Author.cs" />
@@ -269,6 +261,8 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Home\BooksForAuthor.cshtml" />
+    <Content Include="Views\Home\Create_Author.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -287,21 +281,15 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201903071527531_InitialCreate.resx">
-      <DependentUpon>201903071527531_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201903091438584_MigrateDB.resx">
-      <DependentUpon>201903091438584_MigrateDB.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201903091608457_MigrateDB1.resx">
-      <DependentUpon>201903091608457_MigrateDB1.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201903141742169_MigrateDB1.resx">
+      <DependentUpon>201903141742169_MigrateDB1.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,12 +1,12 @@
-﻿@model IEnumerable<Urok1_povtor_metanit.Models.Book>
+﻿@model Urok1_povtor_metanit.Models.Author
 
 <div id="serch_book">
     <h3>Wszystkie książki:</h3>
 
-    @foreach (var item in Model)
+    @foreach (var item in Model.Books)
     {
         <ul>
-            <li><b>Nazwa książki: </b> @item.Name | <b>Cena książki: </b>@item.Price</li>
+            <li><b>Nazwa książki: </b> @Html.Display(item.Name) | <b>Cena książki: </b>@Html.Display(item.Price.ToString())</li>
         </ul>
     }
 

@@ -1,0 +1,40 @@
+﻿@using Urok1_povtor_metanit.Models
+@model Author
+@{
+    ViewBag.Title = "Create_Author";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Dodanie authora: </h2>
+@using (Html.BeginForm("Create_Author", "Home", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div>
+        <table>
+            <tr>
+                <td><p>Wpisz imie authora: </p></td>
+                <td><p>@Html.EditorFor(m => Model.Name)</p></td>
+            </tr>
+            <tr>
+                <td><p>Zaznacz książki authora: </p></td>
+                <td>
+                    <p>
+                        @foreach (Book c in ViewBag.Books)
+                        {
+                            <input type="checkbox" name="selectedBooks" value="@c.Id" />@c.Name <br />
+                        }
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td><p>Wpisz kraj authora: </p></td>
+                <td><p>@Html.EditorFor(m => Model.Country)</p></td>
+            </tr>
+            <tr>
+                <td><p>Wpisz rok urodzenia authora: </p></td>
+                <td><p>@Html.EditorFor(m => Model.Year)</p></td>
+            </tr>
+        </table>
+    </div>
+    <p><input type="submit" value="Dodać"></p>
+}

@@ -12,6 +12,13 @@ namespace Urok1_povtor_metanit.Models
         public DbSet<Purchase> Purchases { get; set; }
         public DbSet<Author> Authors { get; set; }
 
-
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Author>().HasMany(c => c.Books)
+                .WithMany(s => s.Authors)
+                .Map(t => t.MapLeftKey("AuthorId")
+                .MapRightKey("BookId")
+                .ToTable("AuthorBook"));
+        }
     }
 }

@@ -13,7 +13,7 @@ namespace Urok1_povtor_metanit.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201903091608457_MigrateDB1"; }
+            get { return "201903141742169_MigrateDB1"; }
         }
         
         string IMigrationMetadata.Source

@@ -188,7 +188,5 @@ F:\GitHub\ASP_NET_Bookstore\Urok1_povtor_metanit\obj\Debug\Urok1_povtor_metanit.
 F:\GitHub\ASP_NET_Bookstore\Urok1_povtor_metanit\obj\Debug\Urok1_povtor_metanit.csproj.CopyComplete
 F:\GitHub\ASP_NET_Bookstore\Urok1_povtor_metanit\obj\Debug\Urok1_povtor_metanit.dll
 F:\GitHub\ASP_NET_Bookstore\Urok1_povtor_metanit\obj\Debug\Urok1_povtor_metanit.pdb
-F:\GitHub\ASP_NET_Bookstore\Urok1_povtor_metanit\obj\Debug\Urok1_povtor_metanit.Migrations.InitialCreate.resources
-F:\GitHub\ASP_NET_Bookstore\Urok1_povtor_metanit\obj\Debug\Urok1_povtor_metanit.csproj.GenerateResource.cache
-F:\GitHub\ASP_NET_Bookstore\Urok1_povtor_metanit\obj\Debug\Urok1_povtor_metanit.Migrations.MigrateDB.resources
 F:\GitHub\ASP_NET_Bookstore\Urok1_povtor_metanit\obj\Debug\Urok1_povtor_metanit.Migrations.MigrateDB1.resources
+F:\GitHub\ASP_NET_Bookstore\Urok1_povtor_metanit\obj\Debug\Urok1_povtor_metanit.csproj.GenerateResource.cache

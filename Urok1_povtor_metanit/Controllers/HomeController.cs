@@ -19,13 +19,10 @@ namespace Urok1_povtor_metanit.Controllers
         /// </summary>
         /// <returns></returns>
         public async Task<ActionResult> Index()
-
         {
-            //IEnumerable<Book> books = await db.Books.ToListAsync();
-            //ViewBag.Books = books;
-            SelectList books = new SelectList(await db.Books.ToListAsync(), "Author", "Name");
-            ViewBag.Books = books;
-            return View(await db.Books.Include(p => p.Author).ToListAsync());
+            SelectList authors = new SelectList(db.Authors, "Id", "Name");
+            ViewBag.Authors = authors;
+            return View(await db.Books.Include(p => p.Authors).ToListAsync());
         }
 
         [HttpGet]
@@ -141,7 +138,7 @@ namespace Urok1_povtor_metanit.Controllers
                 {
                     return HttpNotFound();
                 }
-                SelectList authors = new SelectList(db.Authors, "Id", "Name", book.AuthorId);
+                SelectList authors = new SelectList(db.Authors, "Id", "Name", book.Authors);
                 ViewBag.Authors = authors;
 
                 return View(book);
@@ -170,22 +167,19 @@ namespace Urok1_povtor_metanit.Controllers
         public ActionResult Create()
         {
             SelectList authors = new SelectList(db.Authors, "Id", "Name");
-
             ViewBag.Authors = authors;
+
             return View();
         }
 
         [HttpPost]
-        public ActionResult Create(List<Book> books)
+        public ActionResult Create(Book book)
         {
-            foreach(Book book in books)
+            if(book == null)
             {
-                if (book == null){}
-                else
-                {
-                    db.Books.Add(book);
-                }
-            }          
+                return HttpNotFound();
+            }
+            db.Books.Add(book);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -201,7 +195,7 @@ namespace Urok1_povtor_metanit.Controllers
         public ActionResult DeleteBook(int? id)
         {
             Book book = db.Books.Find(id);
-            Author vv  = db.Authors.Find(book.AuthorId);
+            Author vv  = db.Authors.Find(book.Authors);
             ViewData["Author"] = vv.Name;
             if (book == null)
             {
@@ -232,12 +226,8 @@ namespace Urok1_povtor_metanit.Controllers
         [HttpGet]
         public ActionResult AuthorHisBooks(int? id)
         {
-            var allbooks = db.Books.Where(p => p.AuthorId == id).ToList();
-            if(allbooks.Count <= 0)
-            {
-                return HttpNotFound();
-            }
-            return PartialView(allbooks);
+            Author author = db.Authors.Find(id);         
+            return PartialView(author);
         }
 
         [HttpPost]
@@ -271,6 +261,39 @@ namespace Urok1_povtor_metanit.Controllers
             PageInfo pageInfo = new PageInfo { PageNumber = page, PageSize = pageSize, TotalItems = db.Books.Count() };
             IndexViewModel ivm = new IndexViewModel { PageInfo = pageInfo, Books = booksPerPages };
             return View(ivm);
+        }
+
+        [HttpGet]
+        public ActionResult BooksForAuthor(Book book)
+        {
+
+            var authors = db.Authors.Where(p => p.Books.Contains(book)).ToList();
+            return PartialView(authors);
+        }
+
+        public ActionResult Create_Author()
+        {
+            ViewBag.Books = db.Books;
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create_Author(Author author, int[] selectedBooks)
+        {
+            if (selectedBooks != null)
+            {
+                foreach (var c in db.Books.Where(co => selectedBooks.Contains(co.Id)))//!!!
+                {
+                    author.Books.Add(c);
+                }
+            }
+            if(author == null)
+            {
+                return HttpNotFound();
+            }
+            db.Authors.Add(author);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }

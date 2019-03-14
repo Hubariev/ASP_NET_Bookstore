@@ -1,13 +1,13 @@
-﻿@* Jest wykorzystywany helper, który wyświetla ksiażki. Taki helper można wykorzystywać sporo razy *@
-@helper BookList(IEnumerable<Urok1_povtor_metanit.Models.Book> books)
-    {
-        <ul>
-            @foreach (Urok1_povtor_metanit.Models.Book b in books)
-            {
-                <li>@b.Name</li>
-            }
-        </ul>
-}
+﻿@*@* Jest wykorzystywany helper, który wyświetla ksiażki. Taki helper można wykorzystywać sporo razy *@
+@*@helper BookList(IEnumerable<Urok1_povtor_metanit.Models.Book> books)
+        {
+            <ul>
+                @foreach (Urok1_povtor_metanit.Models.Book b in books)
+                {
+                    <li>@b.Name</li>
+                }
+            </ul>
+    }*@
 
 
 
@@ -26,35 +26,43 @@
 </head>
 <body>
     <div>
-        <h3>Books</h3>
+        <h3>Główna strona internetowa</h3>
+        <table>
+            <tr>
+                <td><b><a href="/Home/Create">Dodanie nowej książki | </a></b></td>
+                <td><b><a href="/Home/Create_Author">Dodanie nowego authora | </a></b></td>
+                <td><b><a href="/Home/Paginacja">Paginacja</a></b></td>
+            </tr>
+        </table>
         <table>
             <tr>
                 <td><p><b>Name</b></p></td>
+                <td><p><b>Author</b></p></td>
                 <td><p><b>Author</b></p></td>
                 <td><p><b>Price</b></p></td>
                 <td><p><b>Kupić</b></p></td>
                 <td><p><b>Edit</b></p></td>
                 <td><p><b>Delete</b></p></td>
             </tr>
-            @Html.DropDownList("Author", ViewBag.Books as SelectList)
 
             @foreach (Urok1_povtor_metanit.Models.Book item in Model)
-    {
-        <tr>
-            <td><p>@item.Name</p></td>
-
-            <td><p>@item.Author.Name</p></td>
-            <td><p>@item.Price</p></td>
-            <td><p><a href="/Home/Buy/@item.Id">Buy</a></p></td>
-            <td><p><a href="/Home/EditBook/@item.Id">Edit</a></p></td>
-            <td><p><a href="/Home/DeleteBook/@item.Id">Delete</a></p></td>
-        </tr>
-}
-            @{
-        string boby = "Hello, honey!";
+            {
+                <tr>
+                    <td><p>@item.Name</p></td>
+                    <td><p>@Ajax.ActionLink("Authors", "BooksForAuthor", new { book = @item }, new AjaxOptions { UpdateTargetId = "results3" })</p></td>
+                    <td><div id="results3"></div></td>
+                    <td><p>@item.Price</p></td>
+                    @* -------------------------------------- *@
+                    <td><p><a href="/Home/Buy/@item.Id">Buy</a></p></td>
+                    <td><p><a href="/Home/EditBook/@item.Id">Edit</a></p></td>
+                    <td><p><a href="/Home/DeleteBook/@item.Id">Delete</a></p></td>
+                </tr>
             }
-            /**/
-            /**/
+
+            @{
+                string boby = "Hello, honey!";
+            }
+
             <tr>
                 <td><p><a href="/Home/Reads?b=@boby">All purchase</a></p></td>
 
@@ -72,16 +80,15 @@
 
             </tr>
             <tr> <td>----------------------</td></tr>
-            <p><b><a href="/Home/Create">Dodanie nowej książki</a></b></p>
-            <p><b><a href="/Home/GetAuthor">Dodanie do authora</a></b></p>
-            <p><b><a href="/Home/Paginacja">Paginacja</a></b></p>
+
             @*<td><p>@Html.ActionLink("All purchase", "Reads", "Home", b = "hello")</p></td>*@
         </table>
     </div>
     <div id="results2"></div>
-    
+
 
     <div>
+        --
         @using (Ajax.BeginForm("BookSearch", new AjaxOptions
         {
             LoadingElementId = "loading",
@@ -101,10 +108,10 @@
 
         <div id="results"></div>
     </div>
-    <table>
-        @BookList(Model)
-        @BookList(Model)
-    </table>
+    @*<table>
+            @BookList(Model)
+            @BookList(Model)
+        </table>*@
 </body>
 </html>
 <a>bob</a>

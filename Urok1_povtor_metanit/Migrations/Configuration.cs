@@ -10,7 +10,6 @@ namespace Urok1_povtor_metanit.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "Urok1_povtor_metanit.Models.BookContext";
         }
 
         protected override void Seed(Urok1_povtor_metanit.Models.BookContext context)

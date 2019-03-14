@@ -15,7 +15,7 @@ namespace Urok1_povtor_metanit.Models
 
         public int Year { get; set; }
 
-        public ICollection<Book> Books { get; set; }
+        public virtual ICollection<Book> Books { get; set; }
 
         public Author()
         {
@@ -23,3 +23,4 @@ namespace Urok1_povtor_metanit.Models
         }
     }
 }
+

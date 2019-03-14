@@ -3,16 +3,11 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@{
-    Book[] books = new Book[5];
-
-}
 
 <h3>Dodanie książki</h3>
 
 @using (Html.BeginForm("Create", "Home", FormMethod.Post))
 {
-    int i = 0;
     @Html.AntiForgeryToken()
 
     <div id="booksBlock">
@@ -20,15 +15,15 @@
             <table>
                 <tr>
                     <td><p>Wpisz nazwę książki: </p></td>
-                    <td><p>@Html.EditorFor(m => books[i].Name)</p></td>
+                    <td><p>@Html.EditorFor(m => Model.Name)</p></td>
                 </tr>
                 <tr>
                     <td><p>Wybierz imie Authora: </p></td>
-                    <td><p>@Html.DropDownListFor(m => books[i].AuthorId, ViewBag.Authors as SelectList)</p></td>
+                    <td><p>@Html.DropDownListFor(m => Model.Authors, ViewBag.Authors as SelectList)</p></td>
                 </tr>
                 <tr>
                     <td><p>Wpisz cenę książki: </p></td>
-                    <td><p>@Html.EditorFor(m => books[i].Price)</p></td>
+                    <td><p>@Html.EditorFor(m => Model.Price)</p></td>
                 </tr>
             </table>
         </div>

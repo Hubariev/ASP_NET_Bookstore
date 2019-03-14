@@ -1,0 +1,14 @@
+﻿@model IEnumerable<Urok1_povtor_metanit.Models.Author>
+
+<div id="searchresults1">
+    <p>Authory:</p>
+    @foreach (Urok1_povtor_metanit.Models.Author item in Model)
+    {
+        <ol>
+            <li>@item.Name</li>
+            <li>@item.Country</li>
+            <li>@item.Year</li>
+        </ol>
+
+    }
+</div>
