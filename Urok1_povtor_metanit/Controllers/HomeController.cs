@@ -266,7 +266,7 @@ namespace Urok1_povtor_metanit.Controllers
 
         public ActionResult Paginacja(int page = 1)
         {
-            int pageSize = 3; // количество объектов на страницу
+            int pageSize = 3; 
             IEnumerable<Book> booksPerPages = db.Books.OrderBy(p => p.Name).Skip((page - 1) * pageSize).Take(pageSize);
             PageInfo pageInfo = new PageInfo { PageNumber = page, PageSize = pageSize, TotalItems = db.Books.Count() };
             IndexViewModel ivm = new IndexViewModel { PageInfo = pageInfo, Books = booksPerPages };
