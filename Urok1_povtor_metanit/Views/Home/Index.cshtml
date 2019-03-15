@@ -49,12 +49,15 @@
             {
                 <tr>
                     <td><p>@item.Name</p></td>
-                    <td><p>@Ajax.ActionLink("Authors", "BooksForAuthor", new { book = @item }, new AjaxOptions { UpdateTargetId = "results3" })</p></td>
-                    <td><div id="results3"></div></td>
+
+                    <td><p>@Html.DropDownListFor(m => item.Authors, new SelectList(item.Authors, "Id", "Name"))</p></td>
+
                     <td><p>@item.Price</p></td>
-                    @* -------------------------------------- *@
+
                     <td><p><a href="/Home/Buy/@item.Id">Buy</a></p></td>
+
                     <td><p><a href="/Home/EditBook/@item.Id">Edit</a></p></td>
+
                     <td><p><a href="/Home/DeleteBook/@item.Id">Delete</a></p></td>
                 </tr>
             }

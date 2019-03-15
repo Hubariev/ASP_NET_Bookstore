@@ -7,7 +7,7 @@ namespace Urok1_povtor_metanit.Models
 {
     public class Book
     {
-        public int Id { get; set; }
+        public int Id { get; set; }//id
 
         public string Name { get; set; }
 
