@@ -163,6 +163,7 @@
     <Compile Include="Models\Author.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\BookContext.cs" />
+    <Compile Include="Models\BooksListViewModel.cs" />
     <Compile Include="Models\IndexViewModel.cs" />
     <Compile Include="Models\PageInfo.cs" />
     <Compile Include="Models\Purchase.cs" />
@@ -251,7 +252,6 @@
     <Content Include="Views\Home\BookSearch.cshtml" />
     <Content Include="Views\Home\InfoAboutAuthor.cshtml" />
     <Content Include="Views\Home\GetAuthor.cshtml" />
-    <Content Include="Views\Home\Paginacja.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
     <Content Include="Scripts\umd\popper-utils.min.js.map" />
@@ -263,6 +263,7 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Home\BooksForAuthor.cshtml" />
     <Content Include="Views\Home\Create_Author.cshtml" />
+    <Content Include="Views\Home\Filtracja.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

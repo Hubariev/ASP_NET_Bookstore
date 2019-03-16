@@ -26,19 +26,18 @@
                         <td><p>@Html.LabelFor(m => m.Price)</p></td>
                         <td><p>@Html.EditorFor(m => m.Price, "")</p></td>
                     </tr>
-                    @*@*<div class="editor-label"><b>Курсы</b></div>*@
-                    @foreach (Author c in ViewBag.Authors)
-    {
-                <input type="checkbox" name="selectedCourses" value="@c.Id"
-                       @(item.Authors.Contains(c) ? "checked=\"checked\"" : "") />@c.Name
-                    <br />
-
-}*@
-
-                    
                     <tr>
-                        <td><p>Author</p></td>
-                        <td><p>@Html.DropDownListFor(model => model.Authors, ViewBag.Authors as SelectList)</p></td>
+                        <td><p>@Html.LabelFor(m => m.Price)</p></td>
+
+                        <td>
+                            <p>
+                                @foreach (var item in ViewBag.Authors)
+                                {
+                                    <input type="checkbox" name="selectedCourses" value="@item.Id"
+                                           @(Model.Authors.Contains(item) ? "checked=\"checked\"" : "") />@item.Name <br />
+                                }
+                            </p>
+                        </td>
                     </tr>
                     <tr>
                         <td><input type="submit" value="Edit" /></td>

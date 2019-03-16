@@ -6,7 +6,7 @@
     @foreach (var item in Model.Books)
     {
         <ul>
-            <li><b>Nazwa książki: </b> @Html.Display(item.Name) | <b>Cena książki: </b>@Html.Display(item.Price.ToString())</li>
+            <li><b>Nazwa książki: </b> @item.Name | <b>Cena książki: </b>@item.Price)</li>
         </ul>
     }
 

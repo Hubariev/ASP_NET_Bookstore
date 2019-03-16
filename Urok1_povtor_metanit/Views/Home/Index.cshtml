@@ -11,8 +11,8 @@
 
 
 
-@using Urok1_povtor_metanit.Models
-@model IEnumerable<Book>
+@model Urok1_povtor_metanit.Models.IndexViewModel
+@using Urok1_povtor_metanit.Helpers
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -25,19 +25,35 @@
     <meta name="viewport" content="width=device=width" />
 </head>
 <body>
-    <div>
+    <div class="table">
         <h3>Główna strona internetowa</h3>
+        <br />
         <table>
             <tr>
                 <td><b><a href="/Home/Create">Dodanie nowej książki | </a></b></td>
                 <td><b><a href="/Home/Create_Author">Dodanie nowego authora | </a></b></td>
-                <td><b><a href="/Home/Paginacja">Paginacja</a></b></td>
             </tr>
+            <tr></tr>
         </table>
+        <br />
+    </div>
+
+    <div class="table">
+        <form method="get">
+            <div class="form-inline">
+                <label class="control-label">Author: </label>
+                @Html.DropDownList("author", Model.Authors as SelectList,
+                                                 htmlAttributes: new { @class = "form-control" })
+
+                <input type="submit" value="Filtr" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+
+    <div class="table">
         <table>
             <tr>
                 <td><p><b>Name</b></p></td>
-                <td><p><b>Author</b></p></td>
                 <td><p><b>Author</b></p></td>
                 <td><p><b>Price</b></p></td>
                 <td><p><b>Kupić</b></p></td>
@@ -45,7 +61,7 @@
                 <td><p><b>Delete</b></p></td>
             </tr>
 
-            @foreach (Urok1_povtor_metanit.Models.Book item in Model)
+            @foreach (Urok1_povtor_metanit.Models.Book item in Model.Books)
             {
                 <tr>
                     <td><p>@item.Name</p></td>
@@ -61,15 +77,17 @@
                     <td><p><a href="/Home/DeleteBook/@item.Id">Delete</a></p></td>
                 </tr>
             }
+        </table>
+        <br />
+        <div class="btn-group">
+            @Html.PageLinks(Model.PageInfo, x => Url.Action("Index", new { page = x }))
+        </div>
+    </div>
 
-            @{
-                string boby = "Hello, honey!";
-            }
 
+    <div>
+        <table>
             <tr>
-                <td><p><a href="/Home/Reads?b=@boby">All purchase</a></p></td>
-
-
                 <td><p><a href="/Home/GetFile">Download picture</a></p></td>
                 <td><p><a href="/Home/GetBytes">Download bytes picture</a></p></td>
                 <td><p><a href="/Home/InfoAboutUser">InfoAboutUser</a></p></td>
@@ -83,8 +101,6 @@
 
             </tr>
             <tr> <td>----------------------</td></tr>
-
-            @*<td><p>@Html.ActionLink("All purchase", "Reads", "Home", b = "hello")</p></td>*@
         </table>
     </div>
     <div id="results2"></div>

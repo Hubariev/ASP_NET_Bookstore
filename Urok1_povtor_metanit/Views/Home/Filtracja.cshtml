@@ -1,0 +1,51 @@
+﻿
+
+@model Urok1_povtor_metanit.Models.BooksListViewModel
+
+
+@{
+    ViewBag.Title = "Filtracja";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Catalog książek</h2>
+
+<form method="get">
+    <div class="form-inline">
+        <label class="control-label">Author: </label>
+        @Html.DropDownList("author", Model.Authors as SelectList,
+                                        htmlAttributes: new { @class = "form-control" })
+
+        <input type="submit" value="Filtr" class="btn btn-default" />
+    </div>
+</form>
+
+<table>
+    <tr>
+        <th>Nazwa książki</th>
+        <th>Cena</th>
+        <th>Author</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Books)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                <ol>
+                    @foreach (var v in item.Authors)
+                    {
+                        <li>@v.Name</li>
+                    }
+                </ol>
+            </td>
+
+        </tr>
+    }
+</table>

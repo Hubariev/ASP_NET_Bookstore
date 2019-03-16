@@ -19,7 +19,14 @@
                 </tr>
                 <tr>
                     <td><p>Wybierz imie Authora: </p></td>
-                    <td><p>@Html.DropDownListFor(m => Model.Authors, ViewBag.Authors as SelectList)</p></td>
+                    <td>
+                        <p>
+                            @foreach (Author c in ViewBag.Authors)
+                            {
+                                <input type="checkbox" name="selectedAuthors" value="@c.Id" />@c.Name <br />
+                            }
+                        </p>
+                    </td>
                 </tr>
                 <tr>
                     <td><p>Wpisz cenę książki: </p></td>
@@ -51,12 +58,12 @@
                     "<tr>" +
                     "<td><p>Wybierz imie Authora: </p></td>" +
                     "<select name='books[" + b + "].AuthorId'>";
-                
+
                         for (var item in @ViewBag.Authors)
                         {
                             var html3Add =+ "<option value='" + item + "' selected>" + item + "</option>"
-                        }   
-                
+                        }
+
                     var html4Add = /*"</select>" + */
                     "</tr>" +
                     "<tr>" +
