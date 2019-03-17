@@ -43,9 +43,12 @@
             <div class="form-inline">
                 <label class="control-label">Author: </label>
                 @Html.DropDownList("author", Model.Authors as SelectList,
-                                                 htmlAttributes: new { @class = "form-control" })
+                                        htmlAttributes: new { @class = "form-control" })
 
-                <input type="submit" value="Filtr" class="btn btn-default" />
+                <div class="btn-group" role="group">
+                    <input type="submit" value="Filtr" class="btn btn-default" />
+                </div>
+
             </div>
         </form>
     </div>
@@ -63,19 +66,20 @@
 
             @foreach (Urok1_povtor_metanit.Models.Book item in Model.Books)
             {
-                <tr>
-                    <td><p>@item.Name</p></td>
+            <tr>
+                <td><p>@item.Name</p></td>
 
-                    <td><p>@Html.DropDownListFor(m => item.Authors, new SelectList(item.Authors, "Id", "Name"))</p></td>
+                <td><p>@Html.DropDownListFor(m => item.Authors, new SelectList(item.Authors, "Id", "Name"))</p></td>
+  
 
-                    <td><p>@item.Price</p></td>
+                <td><p>@item.Price</p></td>
 
-                    <td><p><a href="/Home/Buy/@item.Id">Buy</a></p></td>
+                <td><p><a href="/Home/Buy/@item.Id">Buy</a></p></td>
 
-                    <td><p><a href="/Home/EditBook/@item.Id">Edit</a></p></td>
+                <td><p><a href="/Home/EditBook/@item.Id">Edit</a></p></td>
 
-                    <td><p><a href="/Home/DeleteBook/@item.Id">Delete</a></p></td>
-                </tr>
+                <td><p><a href="/Home/DeleteBook/@item.Id">Delete</a></p></td>
+            </tr>
             }
         </table>
         <br />
@@ -122,17 +126,14 @@
             <input type="submit" value="Поиск" />
         }
         <div id="loading" style="display:none; color:green; font-weight:bold;">
-            <p>Идет загрузка...</p>
+            <p>Downloading...</p>
         </div>
 
         <div id="results"></div>
     </div>
-    @*<table>
-            @BookList(Model)
-            @BookList(Model)
-        </table>*@
+
 </body>
 </html>
-<a>bob</a>
+
 @Scripts.Render("~/scripts/jquery-3.3.1.min.js")
 @Scripts.Render("~/scripts/jquery.unobtrusive-ajax.min.js")

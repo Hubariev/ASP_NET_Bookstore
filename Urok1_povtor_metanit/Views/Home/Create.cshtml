@@ -8,31 +8,40 @@
 
 @using (Html.BeginForm("Create", "Home", FormMethod.Post))
 {
+    @Html.ValidationSummary(true)
     @Html.AntiForgeryToken()
 
     <div id="booksBlock">
         <div class="bookItem">
-            <table>
-                <tr>
-                    <td><p>Wpisz nazwę książki: </p></td>
-                    <td><p>@Html.EditorFor(m => Model.Name)</p></td>
-                </tr>
-                <tr>
-                    <td><p>Wybierz imie Authora: </p></td>
-                    <td>
-                        <p>
-                            @foreach (Author c in ViewBag.Authors)
-                            {
-                                <input type="checkbox" name="selectedAuthors" value="@c.Id" />@c.Name <br />
-                            }
-                        </p>
-                    </td>
-                </tr>
-                <tr>
-                    <td><p>Wpisz cenę książki: </p></td>
-                    <td><p>@Html.EditorFor(m => Model.Price)</p></td>
-                </tr>
-            </table>
+            <div class="editor-field">
+                <table>
+                    <tr>
+
+                        <td><p>Wpisz nazwę książki: </p></td>
+                        <td><p>@Html.EditorFor(m => Model.Name)</p></td>
+                        <td><p>@Html.ValidationMessageFor(model => model.Name)</p></td>
+
+
+                    </tr>
+                    <tr>
+                        <td><p>Wybierz imie Authora: </p></td>
+                        <td>
+                            <p>
+                                @foreach (Author c in ViewBag.Authors)
+                                {
+                                    <input type="checkbox" name="selectedAuthors" value="@c.Id" />@c.Name <br />
+                                }
+                            </p>
+                        </td>
+                        <td><p>@Html.ValidationMessageFor(model => model.Authors)</p></td>
+                    </tr>
+                    <tr>
+                        <td><p>Wpisz cenę książki: </p></td>
+                        <td><p>@Html.EditorFor(m => Model.Price)</p></td>
+                        <td><p>@Html.ValidationMessageFor(model => model.Price)</p></td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </div>
     <p><a class="addLink">Dodać książkę</a></p>
@@ -40,43 +49,7 @@
 }
 
 
-
-
-@section Scripts {
-    <script>
-        $(function () {
-            var b = 0;
-            $('.addLink').click(function () {
-                b++;
-                var html2Add =
-                    "<div class='bookItem'>" +
-                    "<table>"
-                    + "<tr>" +
-                    "<td><p>Wpisz nazwę książki: </p></td>" +
-                    "<td><p><input type='text' name='Books[" + b + "].Name' /></p></td>" +
-                    "</tr>" +
-                    "<tr>" +
-                    "<td><p>Wybierz imie Authora: </p></td>" +
-                    "<select name='books[" + b + "].AuthorId'>";
-
-                        for (var item in @ViewBag.Authors)
-                        {
-                            var html3Add =+ "<option value='" + item + "' selected>" + item + "</option>"
-                        }
-
-                    var html4Add = /*"</select>" + */
-                    "</tr>" +
-                    "<tr>" +
-                    "<td><p>Wpisz cenę książki: </p></td>" +
-                    "<td><p><input type='text' name='Books[" + b + "].Price' /></p></td>" +
-                    "</tr>" +
-                    "</table>" +
-                    "</div>";
-                var ttt = html2Add  + html4Add;
-                $('#booksBlock').append(ttt);
-            })
-        })
-    </script>
-}
 @Scripts.Render("~/scripts/jquery-3.3.1.min.js")
 @Scripts.Render("~/scripts/jquery.unobtrusive-ajax.min.js")
+
+

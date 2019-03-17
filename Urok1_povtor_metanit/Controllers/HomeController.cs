@@ -18,11 +18,15 @@ namespace Urok1_povtor_metanit.Controllers
         /// Wyświetlenie wszytkich książek z bazy danych
         /// </summary>
         /// <returns></returns>
+        [AllowAnonymous]
         public async Task<ActionResult> Index(int? author, int page = 1)
         {
-            int pageSize = 3;
+            int pageSize = 3;// ilość skiążek na stronie
+            
+            //paginacja
             IEnumerable<Book> booksPerPages = await db.Books.Include(c => c.Authors).OrderBy(p => p.Name).Skip((page - 1) * pageSize).Take(pageSize).ToListAsync();
 
+            //warunek dla filtracji
             if (author != null && author != 0)
             {
                 Author author1 = db.Authors.Find(author);
@@ -35,7 +39,7 @@ namespace Urok1_povtor_metanit.Controllers
 
             PageInfo pageInfo = new PageInfo { PageNumber = page, PageSize = pageSize, TotalItems = db.Books.Count() };
 
-
+            //model dla filtracji i paginacji
             IndexViewModel ivm = new IndexViewModel
             {
                 PageInfo = pageInfo, Books = booksPerPages, Authors = new SelectList(authors, "Id", "Name")
@@ -192,8 +196,10 @@ namespace Urok1_povtor_metanit.Controllers
             return View();
         }
 
+
         [HttpPost]
-        public ActionResult Create(Book book, int[] selectedAuthors)
+        [HandleError(ExceptionType = typeof(System.Exception), View = "ExceptionFound")]
+        public ActionResult Create([Bind(Include = "Id,Name,Price,Authors")] Book book, int[] selectedAuthors)
         {
             if(selectedAuthors != null)
             {
@@ -202,13 +208,15 @@ namespace Urok1_povtor_metanit.Controllers
                     book.Authors.Add(t);
                 }
             }
-            if (book == null)
+
+            if (ModelState.IsValid && book != null )
             {
-                return HttpNotFound();
+                db.Books.Add(book);
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
-            db.Books.Add(book);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            ViewBag.Authors = db.Authors;
+            return View(book);
         }
         #endregion
 
@@ -282,6 +290,7 @@ namespace Urok1_povtor_metanit.Controllers
             return PartialView(db.Authors);
         }
 
+        [Authorize(Roles ="admin")]
         [HttpGet]
         public ActionResult AuthorHisBooks(int? id)
         {

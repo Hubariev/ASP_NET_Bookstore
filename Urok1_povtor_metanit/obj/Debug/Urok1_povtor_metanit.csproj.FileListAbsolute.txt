@@ -183,10 +183,11 @@ F:\GitHub\ASP_NET_Bookstore\Urok1_povtor_metanit\bin\Microsoft.AI.DependencyColl
 F:\GitHub\ASP_NET_Bookstore\Urok1_povtor_metanit\bin\Microsoft.AI.ServerTelemetryChannel.xml
 F:\GitHub\ASP_NET_Bookstore\Urok1_povtor_metanit\bin\Microsoft.AI.WindowsServer.xml
 F:\GitHub\ASP_NET_Bookstore\Urok1_povtor_metanit\bin\Microsoft.AI.Web.xml
-F:\GitHub\ASP_NET_Bookstore\Urok1_povtor_metanit\obj\Debug\Urok1_povtor_metanit.csprojResolveAssemblyReference.cache
 F:\GitHub\ASP_NET_Bookstore\Urok1_povtor_metanit\obj\Debug\Urok1_povtor_metanit.csproj.CoreCompileInputs.cache
 F:\GitHub\ASP_NET_Bookstore\Urok1_povtor_metanit\obj\Debug\Urok1_povtor_metanit.csproj.CopyComplete
 F:\GitHub\ASP_NET_Bookstore\Urok1_povtor_metanit\obj\Debug\Urok1_povtor_metanit.dll
 F:\GitHub\ASP_NET_Bookstore\Urok1_povtor_metanit\obj\Debug\Urok1_povtor_metanit.pdb
 F:\GitHub\ASP_NET_Bookstore\Urok1_povtor_metanit\obj\Debug\Urok1_povtor_metanit.Migrations.MigrateDB1.resources
 F:\GitHub\ASP_NET_Bookstore\Urok1_povtor_metanit\obj\Debug\Urok1_povtor_metanit.csproj.GenerateResource.cache
+F:\GitHub\ASP_NET_Bookstore\Urok1_povtor_metanit\obj\Debug\Urok1_povtor_metanit.Migrations.MigrateDB2.resources
+F:\GitHub\ASP_NET_Bookstore\Urok1_povtor_metanit\obj\Debug\Urok1_povtor_metanit.csprojResolveAssemblyReference.cache
