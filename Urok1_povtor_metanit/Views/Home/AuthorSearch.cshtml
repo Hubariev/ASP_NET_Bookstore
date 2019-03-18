@@ -1,0 +1,12 @@
+﻿@model Urok1_povtor_metanit.Models.Book
+
+<div id="searchresults">
+
+    <h5>Wszystkie Authory dla <b>@Model.Name</b>: </h5>
+    <ol>
+        @foreach (var t in Model.Authors)
+        {
+            <li>@t.Name</li>
+        }
+    </ol>
+</div>

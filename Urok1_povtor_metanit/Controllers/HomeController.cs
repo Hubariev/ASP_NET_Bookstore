@@ -171,13 +171,29 @@ namespace Urok1_povtor_metanit.Controllers
         }
 
         [HttpPost]
-        public ActionResult EditBook(Book book)
+        public ActionResult EditBook(Book book, int[] selectedAuthors)
         {
+            Book newbook = db.Books.Find(book.Id);
+
+            newbook.Name = book.Name;
+            newbook.Price = book.Price;
+
+            if (selectedAuthors != null)
+            {
+                newbook.Authors.Clear();
+                foreach (var b in db.Authors.Where(p => selectedAuthors.Contains(p.Id)).ToList())
+                {
+                    newbook.Authors.Add(b);
+                    ////book.Authors.Clear();
+                }
+            }
+
             if (book == null)
             {
                 return HttpNotFound();
             }
-            db.Entry(book).State = EntityState.Modified;
+
+            db.Entry(newbook).State = EntityState.Modified;
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -332,6 +348,31 @@ namespace Urok1_povtor_metanit.Controllers
             return PartialView(authors);
         }
 
-        
+        /// <summary>
+        /// Informacja o wyszukiwarce
+        /// </summary>
+        /// <param name="browser"></param>
+        /// <returns></returns>
+        /// 
+        public string BrowserInfo(string browser)
+        {
+            return browser;
+        }
+
+        /// <summary>
+        /// Wyszukuje wszystkich autorów do książki
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+
+        [HttpGet]
+        public ActionResult AuthorSearch(string name)
+        {
+            List<Book> books = db.Books.Where(p => p.Name == name).ToList();
+
+            Book book = books[0];
+
+            return PartialView(book);
+        }
     }
 }

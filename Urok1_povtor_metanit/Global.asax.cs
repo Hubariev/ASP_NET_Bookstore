@@ -15,7 +15,7 @@ namespace Urok1_povtor_metanit
         protected void Application_Start()
         {
             //Database.SetInitializer(new BookDbInitializer());
-
+            ValueProviderFactories.Factories.Add(new BrowserValueProviderFactory());
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

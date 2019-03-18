@@ -27,14 +27,13 @@
                         <td><p>@Html.EditorFor(m => m.Price, "")</p></td>
                     </tr>
                     <tr>
-                        <td><p>@Html.LabelFor(m => m.Price)</p></td>
+                        <td><p>@Html.LabelFor(m => m.Authors)</p></td>
 
                         <td>
                             <p>
-                                @foreach (var item in ViewBag.Authors)
+                                @foreach (var c in ViewBag.Authors)
                                 {
-                                    <input type="checkbox" name="selectedCourses" value="@item.Id"
-                                           @(Model.Authors.Contains(item) ? "checked=\"checked\"" : "") />@item.Name <br />
+                                    <input type="checkbox" name="selectedAuthors" value="@c.Id" />@c.Name <br />
                                 }
                             </p>
                         </td>

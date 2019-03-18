@@ -168,6 +168,8 @@
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\BookContext.cs" />
     <Compile Include="Models\BooksListViewModel.cs" />
+    <Compile Include="Models\BrowserValueProvider.cs" />
+    <Compile Include="Models\BrowserValueProviderFactory.cs" />
     <Compile Include="Models\IndexViewModel.cs" />
     <Compile Include="Models\PageInfo.cs" />
     <Compile Include="Models\Purchase.cs" />
@@ -268,6 +270,7 @@
     <Content Include="Views\Home\BooksForAuthor.cshtml" />
     <Content Include="Views\Home\Create_Author.cshtml" />
     <Content Include="Views\Home\Filtracja.cshtml" />
+    <Content Include="Views\Home\AuthorSearch.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
