@@ -10,174 +10,173 @@
     }*@
 
 
-
 @model Urok1_povtor_metanit.Models.IndexViewModel
 @using Urok1_povtor_metanit.Helpers
 
-@{
+@*@{
     Layout = "~/Views/Shared/_Layout.cshtml";
-}
+}*@
 
 <!DOCTYPE html>
 
 <html>
 <head>
     <meta name="viewport" content="width=device=width" />
+    @*@Styles.Render("~/Content/Site.css")
+    @Styles.Render("~/Content/css")*@
+    <link rel="stylesheet" href="~/Content/Site.css">
 </head>
 <body>
-    <div class="table">
-        <h3>Główna strona internetowa</h3>
-        <br />
-        <table>
-            <tr>
-                <td><b><a href="/Home/Create">Dodanie nowej książki | </a></b></td>
-                <td><b><a href="/Home/Create_Author">Dodanie nowego authora | </a></b></td>
-            </tr>
-            <tr></tr>
-        </table>
-        <br />
-    </div>
+    <div class="demo">
 
-    <div class="table">
-        <form method="get">
-            <div class="form-inline">
-                <label class="control-label">Author: </label>
-                @Html.DropDownList("author", Model.Authors as SelectList,
-                                                                 htmlAttributes: new { @class = "form-control" })
 
-                <div class="btn-group" role="group">
-                    <input type="submit" value="Filtr" class="btn btn-default" />
-                </div>
-
-            </div>
-        </form>
-    </div>
-
-    <div class="table">
-        <table>
-            <tr>
-                <td><p><b>Name</b></p></td>
-                <td><p><b>Author</b></p></td>
-                <td><p><b>Price</b></p></td>
-                <td><p><b>Kupić</b></p></td>
-                <td><p><b>Edit</b></p></td>
-                <td><p><b>Delete</b></p></td>
-            </tr>
-
-            @foreach (Urok1_povtor_metanit.Models.Book item in Model.Books)
-            {
+        <div class="table">
+            <h3>Główna strona internetowa</h3>
+            <br />
+            <table>
                 <tr>
-                    <td><p>@item.Name</p></td>
-
-                    <td><p>@Html.DropDownListFor(m => item.Authors, new SelectList(item.Authors, "Id", "Name"))</p></td>
-
-
-                    <td><p>@item.Price</p></td>
-
-                    <td><p><a href="/Home/Buy/@item.Id">Buy</a></p></td>
-
-                    <td><p><a href="/Home/EditBook/@item.Id">Edit</a></p></td>
-
-                    <td><p><a href="/Home/DeleteBook/@item.Id">Delete</a></p></td>
+                    <td><b><a href="/Home/Create">Dodanie nowej książki | </a></b></td>
+                    <td><b><a href="/Home/Create_Author">Dodanie nowego authora | </a></b></td>
                 </tr>
-            }
-        </table>
-        <br />
-        <div class="btn-group">
-            @Html.PageLinks(Model.PageInfo, x => Url.Action("Index", new { page = x }))
+                <tr></tr>
+            </table>
+            <br />
+        </div>
+
+        <div class="table">
+            <form method="get">
+                <div class="form-inline">
+                    <label class="control-label">Author: </label>
+                    @Html.DropDownList("author", Model.Authors as SelectList,
+                                                                                htmlAttributes: new { @class = "form-control" })
+
+                    <div class="btn-group" role="group">
+                        <input type="submit" value="Filtr" class="btn btn-default" />
+                    </div>
+
+                </div>
+            </form>
+        </div>
+
+        <div class="table">
+            <table>
+                <tr>
+                    <td><p><b>Name</b></p></td>
+                    <td><p><b>Author</b></p></td>
+                    <td><p><b>Price</b></p></td>
+                    <td><p><b>Kupić</b></p></td>
+                    <td><p><b>Edit</b></p></td>
+                    <td><p><b>Delete</b></p></td>
+                </tr>
+
+                @foreach (Urok1_povtor_metanit.Models.Book item in Model.Books)
+                {
+                    <tr>
+                        <td><p>@item.Name</p></td>
+
+                        <td><p>@Html.DropDownListFor(m => item.Authors, new SelectList(item.Authors, "Id", "Name"))</p></td>
+
+
+                        <td><p>@item.Price</p></td>
+
+                        <td><p><a href="/Home/Buy/@item.Id">Buy</a></p></td>
+
+                        <td><p><a href="/Home/EditBook/@item.Id">Edit</a></p></td>
+
+                        <td><p><a href="/Home/DeleteBook/@item.Id">Delete</a></p></td>
+                    </tr>
+                }
+            </table>
+            <br />
+            <div class="btn-group">
+                @Html.PageLinks(Model.PageInfo, x => Url.Action("Index", new { page = x }))
+            </div>
+        </div>
+
+
+        <div>
+            <table>
+                <tr>
+                    <td><p><a href="/Home/GetFile">Download picture</a></p></td>
+                    <td><p><a href="/Home/GetBytes">Download bytes picture</a></p></td>
+                    <td><p><a href="/Home/InfoAboutUser">InfoAboutUser</a></p></td>
+                </tr>
+                <tr></tr>
+                <tr>
+                    <td><p>Author i jego książki:</p></td>
+                </tr>
+                <tr>
+                    <td><p>@Ajax.ActionLink("Spis Authorów", "InfoAboutAuthor", new AjaxOptions { UpdateTargetId = "results2" })</p></td>
+
+                </tr>
+                <tr> <td>----------------------</td></tr>
+            </table>
+        </div>
+        <div id="results2"></div>
+
+
+        <div>
+            <table>
+                <tr>
+                    <td>
+                        <h5>Wyszukiwarka dla authorów</h5>
+                        @using (Ajax.BeginForm("BookSearch", new AjaxOptions
+                        {
+                            LoadingElementId = "loading",
+                            LoadingElementDuration = 1000,
+
+                            UpdateTargetId = "results",
+
+                            InsertionMode = InsertionMode.Replace
+                        }))
+                        {
+                            <input type="text" name="name" />
+                            <input type="submit" value="Szukaj" />
+                        }
+                        @*<div id="loading" style="display:none; color:green; font-weight:bold;">
+                                <p>Downloading...</p>
+                            </div>*@
+                        <img id="loading" src="@Url.Content("~/Content/Images/cat.gif")" style="display:none" />
+                        <div id="results"></div>
+                    </td>
+
+
+                    <td>
+                        <h5>Wyszukiwarka dla książek</h5>
+
+                        @*<input type="text" name="name" id="search"/>
+                            <input type='button' id="submit" value='Szukaj' />
+
+                            <div id="results"></div>
+                            <script type="text/javascript">
+                                $(document).ready(function () {
+                                    $('#submit').click(function (e) {
+                                        e.preventDefault();
+                                        var name = $('#search').val();
+                                        name = encodeURIComponent(name);
+                                        $('#results').load('@Url.Action("AuthorSearch","Home")?name='+name)
+                                    });
+                                });*@
+
+                        <input type="text" id="search" name="name" />
+                        <input type="button" id="submit" value="Szukaj" />
+
+                        <script type="text/javascript">
+                            $(document).ready(function () {
+                                $('#submit').click(function (e) {
+                                    e.preventDefault();
+                                    var name = $('#search').val();
+                                    name = encodeURIComponent(name);
+                                })
+                            })
+                        </script>
+                    </td>
+                </tr>
+            </table>
+
         </div>
     </div>
 
-
-    <div>
-        <table>
-            <tr>
-                <td><p><a href="/Home/GetFile">Download picture</a></p></td>
-                <td><p><a href="/Home/GetBytes">Download bytes picture</a></p></td>
-                <td><p><a href="/Home/InfoAboutUser">InfoAboutUser</a></p></td>
-            </tr>
-            <tr></tr>
-            <tr>
-                <td><p>Author i jego książki:</p></td>
-            </tr>
-            <tr>
-                <td><p>@Ajax.ActionLink("Spis Authorów", "InfoAboutAuthor", new AjaxOptions { UpdateTargetId = "results2" })</p></td>
-
-            </tr>
-            <tr> <td>----------------------</td></tr>
-        </table>
-    </div>
-    <div id="results2"></div>
-
-
-    <div>
-        <table>
-            <tr>
-                <td>
-                    <h5>Wyszukiwarka dla authorów</h5>
-                    @using (Ajax.BeginForm("BookSearch", new AjaxOptions
-                    {
-                        LoadingElementId = "loading",
-                        LoadingElementDuration = 1000,
-
-                        UpdateTargetId = "results",
-
-                        InsertionMode = InsertionMode.Replace
-                    }))
-                    {
-                        <input type="text" name="name" />
-                        <input type="submit" value="Szukaj" />
-                    }
-                    @*<div id="loading" style="display:none; color:green; font-weight:bold;">
-                            <p>Downloading...</p>
-                        </div>*@
-                    <img id="loading" src="@Url.Content("~/Content/Images/cat.gif")" style="display:none" />
-                    <div id="results"></div>
-                </td>
-
-
-                <td>
-                    <h5>Wyszukiwarka dla książek</h5>
-
-                    @*<input type="text" name="name" id="search"/>
-                    <input type='button' id="submit" value='Szukaj' />
-
-                    <div id="results"></div>
-                    <script type="text/javascript">
-                        $(document).ready(function () {
-                            $('#submit').click(function (e) {
-                                e.preventDefault();
-                                var name = $('#search').val();
-                                name = encodeURIComponent(name);
-                                $('#results').load('@Url.Action("AuthorSearch","Home")?name='+name)
-                            });
-                        });*@
-
-
-
-                    <input type="text" id="search" name="name" />
-                    <input type="button" id="submit" value="Szukaj" />
-
-                    <script type="text/javascript">
-                        $(document).ready(function () {
-                            $('#submit').click(function (e) {
-                                e.preventDefault();
-                                var name = $('#search').val();
-                                name = encodeURIComponent(name);
-                            })
-                        })
-                    </script>
-
-
-
-
-
-                    </script>
-                </td>
-            </tr>
-        </table>
-
-    </div>
 
 
 
