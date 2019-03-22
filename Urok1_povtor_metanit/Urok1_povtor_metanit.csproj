@@ -180,6 +180,7 @@
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -192,8 +193,14 @@
     <Compile Include="Migrations\201903171442358_MigrateDB2.Designer.cs">
       <DependentUpon>201903171442358_MigrateDB2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903221942108_DataMigrations.cs" />
+    <Compile Include="Migrations\201903221942108_DataMigrations.Designer.cs">
+      <DependentUpon>201903221942108_DataMigrations.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationContext.cs" />
+    <Compile Include="Models\ApplicationRole.cs" />
+    <Compile Include="Models\ApplicationRoleManager.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\ApplicationUserManager.cs" />
     <Compile Include="Models\Author.cs" />
@@ -202,7 +209,11 @@
     <Compile Include="Models\BooksListViewModel.cs" />
     <Compile Include="Models\BrowserValueProvider.cs" />
     <Compile Include="Models\BrowserValueProviderFactory.cs" />
+    <Compile Include="Models\CreateRoleModel.cs" />
+    <Compile Include="Models\EditModel.cs" />
+    <Compile Include="Models\EditRoleModel.cs" />
     <Compile Include="Models\IndexViewModel.cs" />
+    <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\PageInfo.cs" />
     <Compile Include="Models\Purchase.cs" />
     <Compile Include="Models\RegisterModel.cs" />
@@ -305,6 +316,12 @@
     <Content Include="Views\Home\Filtracja.cshtml" />
     <Content Include="Views\Home\AuthorSearch.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Delete.cshtml" />
+    <Content Include="Views\Account\Edit.cshtml" />
+    <Content Include="Views\Roles\Index.cshtml" />
+    <Content Include="Views\Roles\Edit.cshtml" />
+    <Content Include="Views\Roles\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -334,6 +351,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201903171442358_MigrateDB2.resx">
       <DependentUpon>201903171442358_MigrateDB2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903221942108_DataMigrations.resx">
+      <DependentUpon>201903221942108_DataMigrations.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

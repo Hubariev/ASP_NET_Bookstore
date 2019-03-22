@@ -18,7 +18,7 @@ namespace Urok1_povtor_metanit.Controllers
         /// Wyświetlenie wszytkich książek z bazy danych
         /// </summary>
         /// <returns></returns>
-        [AllowAnonymous]
+        [Authorize]
         public async Task<ActionResult> Index(int? author, int page = 1)
         {
             int pageSize = 3;// ilość skiążek na stronie
@@ -40,6 +40,7 @@ namespace Urok1_povtor_metanit.Controllers
             PageInfo pageInfo = new PageInfo { PageNumber = page, PageSize = pageSize, TotalItems = db.Books.Count() };
 
             //model dla filtracji i paginacji
+
             IndexViewModel ivm = new IndexViewModel
             {
                 PageInfo = pageInfo, Books = booksPerPages, Authors = new SelectList(authors, "Id", "Name")

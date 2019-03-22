@@ -208,3 +208,4 @@ F:\GitHub\ASP_NET_Bookstore\Urok1_povtor_metanit\bin\Microsoft.Owin.Security.xml
 F:\GitHub\ASP_NET_Bookstore\Urok1_povtor_metanit\bin\Microsoft.Owin.Security.Cookies.xml
 F:\GitHub\ASP_NET_Bookstore\Urok1_povtor_metanit\bin\Microsoft.Owin.Security.OAuth.xml
 F:\GitHub\ASP_NET_Bookstore\Urok1_povtor_metanit\obj\Debug\Urok1_povtor_metanit.csprojResolveAssemblyReference.cache
+F:\GitHub\ASP_NET_Bookstore\Urok1_povtor_metanit\obj\Debug\Urok1_povtor_metanit.Migrations.DataMigrations.resources
