@@ -2,12 +2,14 @@
     font-size: 13px;
     font-family: Verdana, Arial, Helvetica, Sans-Serif;
     text-align: center;
-    background: url("~/Content/Images/777.jpg") no-repeat center top/cover;
+    background: url("~/Content/Images/777.jpg") no-repeat center;
     height: 1000px;
 }
+
 div {
     box-sizing: border-box;
 }
+
 nav {
     display: block;
 }
@@ -44,7 +46,7 @@ td {
 input {
     width: 150px;
 }
- /*styles for validation helpers*/ 
+/*styles for validation helpers*/
 .field-validation-error {
     color: #b94a48;
 }

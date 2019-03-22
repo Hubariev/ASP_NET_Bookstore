@@ -1,0 +1,59 @@
+﻿@model Urok1_povtor_metanit.Models.RegisterModel
+
+@{
+    ViewBag.Title = "Register";
+}
+
+<h2>Register</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    @Html.ValidationSummary(true)
+
+    <div class="form-group">
+        @Html.LabelFor(m => Model.Email, new { @class = "control-label col-md-2" })
+
+        <div class="col-md-10">
+            @Html.EditorFor(m => Model.Email)
+            @*@Html.ValidationMessageFor(m => Model.Email)*@
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => Model.Year, new { @class = "control-label col-md-2" })
+
+        <div class="col-md-10">
+            @Html.EditorFor(m => Model.Year)
+            @*@Html.ValidationMessageFor(m => Model.Year)*@
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => Model.Password, new { @class = "control-label col-md-2" })
+
+        <div class="col-md-10">
+            @Html.EditorFor(m => Model.Password)
+            @*@Html.ValidationMessageFor(m => Model.Password)*@
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(m => Model.PasswordConfirm, new { @class = "control-label col-md-2" })
+
+        <div class="col-md-10">
+            @Html.EditorFor(m => Model.PasswordConfirm)
+            @*@Html.ValidationMessageFor(m => Model.PasswordConfirm)*@
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Zarejestrować" class="btn btn-default" />
+        </div>
+    </div>
+
+</div>
+}
