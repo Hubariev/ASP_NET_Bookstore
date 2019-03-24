@@ -185,17 +185,13 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\PagingHelpers.cs" />
-    <Compile Include="Migrations\201903141742169_MigrateDB1.cs" />
-    <Compile Include="Migrations\201903141742169_MigrateDB1.Designer.cs">
-      <DependentUpon>201903141742169_MigrateDB1.cs</DependentUpon>
+    <Compile Include="Migrations\201903212358192_InitialCreate.cs" />
+    <Compile Include="Migrations\201903212358192_InitialCreate.Designer.cs">
+      <DependentUpon>201903212358192_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201903171442358_MigrateDB2.cs" />
-    <Compile Include="Migrations\201903171442358_MigrateDB2.Designer.cs">
-      <DependentUpon>201903171442358_MigrateDB2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201903221942108_DataMigrations.cs" />
-    <Compile Include="Migrations\201903221942108_DataMigrations.Designer.cs">
-      <DependentUpon>201903221942108_DataMigrations.cs</DependentUpon>
+    <Compile Include="Migrations\201903222206511_MigrateDB3.cs" />
+    <Compile Include="Migrations\201903222206511_MigrateDB3.Designer.cs">
+      <DependentUpon>201903222206511_MigrateDB3.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationContext.cs" />
@@ -346,14 +342,11 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201903141742169_MigrateDB1.resx">
-      <DependentUpon>201903141742169_MigrateDB1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201903212358192_InitialCreate.resx">
+      <DependentUpon>201903212358192_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201903171442358_MigrateDB2.resx">
-      <DependentUpon>201903171442358_MigrateDB2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201903221942108_DataMigrations.resx">
-      <DependentUpon>201903221942108_DataMigrations.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201903222206511_MigrateDB3.resx">
+      <DependentUpon>201903222206511_MigrateDB3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
