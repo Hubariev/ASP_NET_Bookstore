@@ -47,8 +47,7 @@ namespace Urok1_povtor_metanit.Controllers
             };
 
             SelectList authors_spis = new SelectList(db.Authors, "Id", "Name");
-            ViewBag.Authors = authors_spis;
-
+            ViewBag.Authors = authors_spis;            
             return View(ivm);
         }
 
