@@ -374,5 +374,15 @@ namespace Urok1_povtor_metanit.Controllers
 
             return PartialView(book);
         }
+
+        [HttpGet]
+        public ActionResult Modal_Window_for_details(int id, int price)
+        {
+            BookAuthorModel bookAuthorModel = new BookAuthorModel();
+            bookAuthorModel.Authors = db.Books.FirstOrDefault(p => p.Id == id).Authors.ToList();
+            bookAuthorModel.Price = price;
+
+            return PartialView(bookAuthorModel);
+        }
     }
 }

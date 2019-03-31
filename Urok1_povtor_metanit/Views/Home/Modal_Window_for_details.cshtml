@@ -1,0 +1,21 @@
+﻿@model Urok1_povtor_metanit.Models.BookAuthorModel
+
+<div class="modal-content">
+    <div class="modal-header">
+        <button class="close" data-dismiss="modal" area-hidden="true">X</button><br>
+        <h4>Info o książce: </h4>
+    </div>
+    <div class="modal-body">
+        <dl class="dl-horizontal">
+            <dt>Cena książki: </dt>
+            <dd>@Model.Price</dd>
+
+            <dt>Authory książki: </dt>
+
+            @foreach (var item in Model.Authors)
+            {
+                <dd>@item.Name</dd>
+            }
+        </dl>
+    </div>
+</div>

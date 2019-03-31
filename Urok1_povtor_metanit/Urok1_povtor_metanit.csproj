@@ -201,6 +201,7 @@
     <Compile Include="Models\ApplicationUserManager.cs" />
     <Compile Include="Models\Author.cs" />
     <Compile Include="Models\Book.cs" />
+    <Compile Include="Models\BookAuthorModel.cs" />
     <Compile Include="Models\BookContext.cs" />
     <Compile Include="Models\BooksListViewModel.cs" />
     <Compile Include="Models\BrowserValueProvider.cs" />
@@ -318,6 +319,7 @@
     <Content Include="Views\Roles\Index.cshtml" />
     <Content Include="Views\Roles\Edit.cshtml" />
     <Content Include="Views\Roles\Create.cshtml" />
+    <Content Include="Views\Home\Modal_Window_for_details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
