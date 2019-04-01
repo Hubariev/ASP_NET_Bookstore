@@ -2,8 +2,6 @@
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
@@ -60,6 +58,7 @@ namespace Urok1_povtor_metanit.Controllers
         public ActionResult Login(string returnUrl)
         {
             ViewBag.returnUrl = returnUrl;
+            
             return View();
         }
 
@@ -70,6 +69,7 @@ namespace Urok1_povtor_metanit.Controllers
             if (ModelState.IsValid)
             {
                 ApplicationUser user = await UserManager.FindAsync(model.Email, model.Password);
+                TempData["jsonData"] = user.UserName;
                 if (user == null)
                 {
                     ModelState.AddModelError("", "Hasło nie jest poprawne");
@@ -81,6 +81,7 @@ namespace Urok1_povtor_metanit.Controllers
                     AuthenticationManager.SignOut();
                     AuthenticationManager.SignIn(new AuthenticationProperties
                     {
+
                         IsPersistent = true
                     }, claim);
                     if (String.IsNullOrEmpty(returnUrl))
@@ -110,16 +111,16 @@ namespace Urok1_povtor_metanit.Controllers
         {
             ApplicationUser user = await UserManager.FindByEmailAsync(User.Identity.Name);
 
-            if(user != null)
+            if (user != null)
             {
                 IdentityResult result = await UserManager.DeleteAsync(user);
 
-                if(result.Succeeded)
+                if (result.Succeeded)
                 {
-                    return RedirectToAction("Logout","Account");
+                    return RedirectToAction("Logout", "Account");
                 }
             }
-            return RedirectToAction("Index","Home");
+            return RedirectToAction("Index", "Home");
         }
 
         public async Task<ActionResult> Edit()

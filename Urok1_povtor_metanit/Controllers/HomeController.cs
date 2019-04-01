@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Security.Principal;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -47,6 +48,7 @@ namespace Urok1_povtor_metanit.Controllers
             };
 
             SelectList authors_spis = new SelectList(db.Authors, "Id", "Name");
+            ViewBag.UserName = TempData["jsonData"];
             ViewBag.Authors = authors_spis;            
             return View(ivm);
         }

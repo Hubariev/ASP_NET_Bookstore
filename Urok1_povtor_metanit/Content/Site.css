@@ -80,10 +80,10 @@ body {
     font-size: 20px;
 }
 table{
-    color: #ff6a00
+    color: #000
 }
 p {
-    color: #ffd800
+    color: #000000
     
 }
 header {
@@ -107,6 +107,18 @@ container {
 */
 .dl-horizontal dt {
     white-space: normal;
+}
+.logsection p{
+    height: 50px;
+    width: 200px;
+    background: #808080;
+    color: #808080;
+
+    margin-right: 20px;
+
+    text-decoration: none;
+    font-weight: bold;
+
 }
 
 /* Set width on the form input elements since they're 100% wide by default */

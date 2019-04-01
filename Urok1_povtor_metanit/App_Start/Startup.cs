@@ -21,7 +21,7 @@ namespace Urok1_povtor_metanit
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
 
             app.CreatePerOwinContext<ApplicationRoleManager>(ApplicationRoleManager.Create);
-
+            app.MapSignalR();
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
