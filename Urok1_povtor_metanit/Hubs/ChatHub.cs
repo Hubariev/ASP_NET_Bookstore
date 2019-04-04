@@ -11,12 +11,13 @@ namespace Urok1_povtor_metanit.Hubs
     {
         static List<User> Users = new List<User>();
 
+        // Отправка сообщений
         public void Send(string name, string message)
         {
             Clients.All.addMessage(name, message);
         }
 
-        //Połączenie nowego usera
+        // Подключение нового пользователя
         public void Connect(string userName)
         {
             var id = Context.ConnectionId;
@@ -26,18 +27,15 @@ namespace Urok1_povtor_metanit.Hubs
             {
                 Users.Add(new User { ConnectionId = id, Name = userName });
 
-                // Wysłanie wiadomości current user
+                // Посылаем сообщение текущему пользователю
                 Clients.Caller.onConnected(id, userName, Users);
 
-                // Wiadomość do wszystkich userów oprócz current
+                // Посылаем сообщение всем пользователям, кроме текущего
                 Clients.AllExcept(id).onNewUserConnected(id, userName);
             }
         }
 
-
-
-        // Odłączenie użytkownika
-
+        // Отключение пользователя
         public override System.Threading.Tasks.Task OnDisconnected(bool stopCalled)
         {
             var item = Users.FirstOrDefault(x => x.ConnectionId == Context.ConnectionId);
@@ -51,5 +49,4 @@ namespace Urok1_povtor_metanit.Hubs
             return base.OnDisconnected(stopCalled);
         }
     }
-}
 }

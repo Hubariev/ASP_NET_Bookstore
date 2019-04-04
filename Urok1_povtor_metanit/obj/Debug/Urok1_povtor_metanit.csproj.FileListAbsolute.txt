@@ -204,7 +204,13 @@ F:\GitHub\ASP_NET_Bookstore\Urok1_povtor_metanit\bin\Microsoft.Owin.Host.SystemW
 F:\GitHub\ASP_NET_Bookstore\Urok1_povtor_metanit\bin\Microsoft.Owin.Security.xml
 F:\GitHub\ASP_NET_Bookstore\Urok1_povtor_metanit\bin\Microsoft.Owin.Security.Cookies.xml
 F:\GitHub\ASP_NET_Bookstore\Urok1_povtor_metanit\bin\Microsoft.Owin.Security.OAuth.xml
-F:\GitHub\ASP_NET_Bookstore\Urok1_povtor_metanit\obj\Debug\Urok1_povtor_metanit.csprojResolveAssemblyReference.cache
 F:\GitHub\ASP_NET_Bookstore\Urok1_povtor_metanit\obj\Debug\Urok1_povtor_metanit.Migrations.InitialCreate.resources
 F:\GitHub\ASP_NET_Bookstore\Urok1_povtor_metanit\obj\Debug\Urok1_povtor_metanit.csproj.GenerateResource.cache
 F:\GitHub\ASP_NET_Bookstore\Urok1_povtor_metanit\obj\Debug\Urok1_povtor_metanit.Migrations.MigrateDB3.resources
+F:\GitHub\ASP_NET_Bookstore\Urok1_povtor_metanit\bin\Microsoft.AspNet.SignalR.Core.dll
+F:\GitHub\ASP_NET_Bookstore\Urok1_povtor_metanit\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+F:\GitHub\ASP_NET_Bookstore\Urok1_povtor_metanit\bin\Microsoft.AspNet.SignalR.Core.pdb
+F:\GitHub\ASP_NET_Bookstore\Urok1_povtor_metanit\bin\Microsoft.AspNet.SignalR.Core.xml
+F:\GitHub\ASP_NET_Bookstore\Urok1_povtor_metanit\bin\Microsoft.AspNet.SignalR.SystemWeb.pdb
+F:\GitHub\ASP_NET_Bookstore\Urok1_povtor_metanit\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
+F:\GitHub\ASP_NET_Bookstore\Urok1_povtor_metanit\obj\Debug\Urok1_povtor_metanit.csprojResolveAssemblyReference.cache

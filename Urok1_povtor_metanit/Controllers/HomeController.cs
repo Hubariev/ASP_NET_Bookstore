@@ -386,5 +386,13 @@ namespace Urok1_povtor_metanit.Controllers
 
             return PartialView(bookAuthorModel);
         }
+
+
+        public ActionResult AutocompleteSearch(string term)
+        {
+            var models = db.Authors.Where(a => a.Name.Contains(term)).Select(a => new { value = a.Name }).Distinct();
+
+            return Json(models, JsonRequestBehavior.AllowGet);
+        }
     }
 }
